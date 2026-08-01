@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Make terminals slightly translucent for the matrix-glass look.
+# Appends opacity settings to the user terminal configs (idempotent).
+
+# kitty
+if ! grep -q '^background_opacity' ~/.config/kitty/kitty.conf 2>/dev/null; then
+  printf '\n# Norman Bii: translucent background\nbackground_opacity 0.85\n' >> ~/.config/kitty/kitty.conf
+fi
+
+# ghostty
+if ! grep -q '^background-opacity' ~/.config/ghostty/config 2>/dev/null; then
+  printf '\n# Norman Bii: translucent background\nbackground-opacity = 0.85\n' >> ~/.config/ghostty/config
+fi
+
+# foot
+if ! grep -q '^background=' ~/.config/foot/foot.ini 2>/dev/null; then
+  printf '\n# Norman Bii: translucent background (RGBA)\nbackground=1c1c1ed9\n' >> ~/.config/foot/foot.ini
+fi
