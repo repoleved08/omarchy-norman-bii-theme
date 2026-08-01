@@ -14,10 +14,17 @@ or via the Omarchy menu: `Super + Alt + Space` → Install > Style > Theme.
 
 ## Requirements (full macOS look)
 
-The theme sets `icons.theme` to `WhiteSur-dark`. For the matching GTK look, icons, and cursors, install the WhiteSur packages and add the theme-set hook:
+The theme sets `icons.theme` to `WhiteSur-green-dark` (green-accented folders). For the matching GTK look, icons, and cursors, install the WhiteSur packages and add the theme-set hook:
 
 ```sh
 omarchy pkg aur add whitesur-icon-theme-git whitesur-gtk-theme-git whitesur-cursor-theme-git
+```
+
+Then generate the green icon variant (user-local, no sudo):
+
+```sh
+git clone --depth 1 https://github.com/vinceliuice/WhiteSur-icon-theme /tmp/WhiteSur-icon-theme
+bash /tmp/WhiteSur-icon-theme/install.sh -t green
 ```
 
 Then copy the included theme-set hook into place (it applies the WhiteSur GTK theme + cursor on every theme set):
