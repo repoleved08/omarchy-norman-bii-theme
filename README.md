@@ -20,26 +20,10 @@ The theme sets `icons.theme` to `WhiteSur-dark`. For the matching GTK look, icon
 omarchy pkg aur add whitesur-icon-theme-git whitesur-gtk-theme-git whitesur-cursor-theme-git
 ```
 
-Then create `~/.config/omarchy/hooks/theme-set.d/whitesur-gnome`:
+Then copy the included theme-set hook into place (it applies the WhiteSur GTK theme + cursor on every theme set):
 
-```bash
-#!/bin/bash
-
-if [[ -f ~/.config/omarchy/current/theme/light.mode ]]; then
-  GTK_THEME="WhiteSur-Light-green"
-else
-  GTK_THEME="WhiteSur-Dark-green"
-fi
-
-gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
-gsettings set org.gnome.desktop.interface cursor-theme "WhiteSur-cursors"
-
-if command -v hyprctl >/dev/null 2>&1; then
-  hyprctl setcursor WhiteSur-cursors 24 >/dev/null 2>&1 || true
-fi
-```
-
-```
+```sh
+cp extras/theme-set.d/whitesur-gnome ~/.config/omarchy/hooks/theme-set.d/
 chmod +x ~/.config/omarchy/hooks/theme-set.d/whitesur-gnome
 ```
 

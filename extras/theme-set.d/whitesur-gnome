@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Apply the WhiteSur GTK theme and cursor on every theme set.
+# Called with the snake-cased name of the theme that has just been set.
+
+if [[ -f ~/.config/omarchy/current/theme/light.mode ]]; then
+  GTK_THEME="WhiteSur-Light-green"
+else
+  GTK_THEME="WhiteSur-Dark-green"
+fi
+
+gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
+gsettings set org.gnome.desktop.interface cursor-theme "WhiteSur-cursors"
+
+if command -v hyprctl >/dev/null 2>&1; then
+  hyprctl setcursor WhiteSur-cursors 24 >/dev/null 2>&1 || true
+fi
